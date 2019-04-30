@@ -19,12 +19,45 @@
 
 ## Credits and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-Number and name of feature: ________________________________
+Number and name of feature: _repository set up__
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: _15 min____
 
-Start time: _____
+Start time: __900___
 
-Finish time: _____
+Finish time: __930___
 
-Actual time needed to complete: _____
+Actual time needed to complete: _30 min__
+
+
+Number and name of feature: _location
+
+Estimate of time needed to complete: _ one hour_
+
+Start time: __930__
+
+Finish time: __1030___
+
+Actual time needed to complete: _one hour
+
+
+Number and name of feature: _weather
+
+Estimate of time needed to complete: _ one hour_
+
+Start time: __1030__
+
+Finish time: __1130___
+
+Actual time needed to complete: _one hour
+
+
+Number and name of feature: _error
+
+Estimate of time needed to complete: _ 15 mins
+
+Start time: __1030__
+
+Finish time: __1150__
+
+Actual time needed to complete: _20 mins

@@ -12,6 +12,7 @@ function LocationData(geoData){
 
 function WeatherData(locationWeather){
   this.forecast = locationWeather.currently.summary;
+  this.time = locationWeather.currently.time;
 }
 // use environment variable, or, if it's undefined, use 3000 by default
 const PORT = process.env.PORT || 3000;
@@ -27,25 +28,31 @@ app.get('/location', (request, response) => {
   try {
     let geoData = require('./data/geo.json');
     location = new LocationData(geoData);
-    console.log(request.query.data);
-    response.send(geoData);
+    // console.log(request.query.data);
+    response.send({lat:location.latitude, lng:location.longitude});
   } catch( error ) {
-    console.log('there was an error getting geo data');
-    response.status(500).send('sorry, error');
+    errorMessage(response);
   }
 });
 
 app.get('/weather', (request, response) => {
   try {
-    let locationWeather = require('./data/darksky.json');
-    let weather = new WeatherData(locationWeather);
-    console.log({location: {latitude: location.latitude, longitude: location.longitude}});
-    response.send({location: {latitude: location.latitude, longitude: location.longitude}});
-
+    let responseArr = getWeatherData();
+    response.send(responseArr);
+    console.log(responseArr);
   } catch( error ) {
-    console.log('there was an error getting weather data');
-    response.status(500).send('sorry, error');
+    errorMessage(response);
   }
 });
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+function errorMessage(response){
+  response.status(500).send('Sorry, something went wrong');
+}
+
+function getWeatherData(){
+  let locationWeather = require('./data/darksky.json');
+  let weather = new WeatherData(locationWeather);
+  return [{ forcast:weather.forecast, time: weather.time}];
+}
