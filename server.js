@@ -11,8 +11,8 @@ function LocationData(geoData){
 }
 
 function WeatherData(locationWeather){
-  this.forecast = locationWeather.currently.summary;
-  this.time = locationWeather.currently.time;
+  this.summary = locationWeather.summary;
+  this.time = locationWeather.time;
 }
 // use environment variable, or, if it's undefined, use 3000 by default
 const PORT = process.env.PORT || 3000;
@@ -52,7 +52,12 @@ function errorMessage(response){
 }
 
 function getWeatherData(){
+  let forcast = [];
   let locationWeather = require('./data/darksky.json');
-  let weather = new WeatherData(locationWeather);
-  return [{ forcast:weather.forecast, time: weather.time}];
+  locationWeather.daily.data.forEach((element) =>{
+    let weather = new WeatherData(element);
+    forcast.push({forcast:weather.summary, time:weather.time});
+    console.log(forcast);
+  });
+  return forcast;
 }
