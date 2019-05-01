@@ -34,7 +34,7 @@ app.get('/location', (request, response) => {
     let geoData = require('./data/geo.json');
     location = new LocationData(geoData);
     // console.log(request.query.data);
-    response.send({lat:location.latitude, lng:location.longitude});
+    response.send(location);
   } catch( error ) {
     errorMessage(response);
   }
