@@ -2,8 +2,13 @@
 
 let location;
 require('dotenv').config();
+const cors = require('cors');
+app.use(cors());
+
 const express = require('express');
 const app = express();
+
+
 function LocationData(geoData){
   this.address = geoData.results[0].formatted_address;
   this.latitude = geoData.results[0].geometry.location.lat;
